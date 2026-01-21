@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewIQ - Free AI Mock Interview Practice Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f7fafc;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn-primary {
+            background: white;
+            color: #667eea;
+            font-size: 18px;
+            padding: 16px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #1a202c;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .step-card p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            font-size: 15px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: #667eea;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #4a5568;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #cbd5e0;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #cbd5e0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            color: #1a202c;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #a0aec0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.error {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .message.success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #4a5568;
+        }
+
+        .auth-switch a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .user-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .interview-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .type-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%);
+            padding: 35px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .type-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border-color: #667eea;
+        }
+
+        .type-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .type-card p {
+            color: #4a5568;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .type-card .meta {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .history-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .history-item:hover {
+            transform: translateX(5px);
+        }
+
+        .interview-screen {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 40px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            background: white;
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .question-number {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .results-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .score {
+            font-size: 72px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .feedback-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #667eea;
+        }
+
+        .feedback-item h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feedback-item .question {
+            color: #4a5568;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .feedback-item .assessment {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .assessment-badge {
+            background: #48bb78;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .assessment-badge.weak {
+            background: #f56565;
+        }
+
+        .assessment-badge.good {
+            background: #ed8936;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .interview-screen {
+                padding: 20px;
+            }
+
+            .score {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="goToHome()">InterviewIQ</div>
+            <div class="nav-links">
+                <a href="#features" onclick="scrollToSection('features')">Features</a>
+                <a href="#how-it-works" onclick="scrollToSection('how-it-works')">How It Works</a>
+                <a href="#faq" onclick="scrollToSection('faq')">FAQ</a>
+                <span id="navAuth">
+                    <button class="btn btn-secondary" onclick="openModal('login')">Login</button>
+                    <button class="btn btn-primary" onclick="openModal('signup')">Start Free</button>
+                </span>
+                <span id="navUser" class="hidden">
+                    <span style="margin-right: 15px; color: #4a5568; font-weight: 500;" id="userEmailNav"></span>
+                    <button class="btn btn-secondary" onclick="handleLogout()">Logout</button>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <section class="hero">
+            <h1>Mock Interviews to Mastery.<br>Prepare, Practice, and Own the Real One.</h1>
+            <p>AI-based practice to help you be ready for the real interview</p>
+            <button class="btn btn-primary" onclick="openModal('signup')">Start Now</button>
+        </section>
+
+        <section class="container" id="how-it-works" style="background: #f7fafc; padding: 80px 20px;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="section-title">Unlock Your Interview Success in 3 Steps!</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Choose a Role or Job Detail</h3>
+                        <p>AI will generate potential interview questions based on the role you choose. Select your target role for the best results.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Start Your Mock Interview</h3>
+                        <p>After your questions are generated, start your mock interview to experience a realistic text-based session.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Get AI-Based Feedback</h3>
+                        <p>See your score and feedback once your mock interview is complete. Now you're ready for the real one!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="features">
+            <h2 class="section-title">How Does This Work?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Role-based Questions</h3>
+                    <p>Answer questions in a format that feels like a real interview</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Analysis</h3>
+                    <p>AI scores your answers and shows you what to improve</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>See Your Progress</h3>
+                    <p>Track your results and keep improving with each session</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Practice Anytime</h3>
+                    <p>24/7 availability - practice whenever suits you best</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="faq" style="background: #f7fafc; padding: 80px 20px;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How does the AI Mock Interview work?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            The AI Mock Interview generates customized practice sessions based on your chosen job role. InterviewIQ provides job-specific questions tailored to your target position, helping you prepare effectively.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Will the AI Mock Interview feel realistic?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Definitely! The AI Mock Interview is designed to replicate the experience of a real interview with realistic questions and a professional format.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How can I make the most of my practice sessions?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Treat each practice session as if it were the real thing. Answer thoughtfully, practice consistently with different interview questions, and track your progress over time to identify areas for improvement.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I use this for free?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Simply sign up for an account to access InterviewIQ's mock interview practice tool and start preparing for your next interview.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <div class="dashboard-header">
+            <h1>Welcome Back!</h1>
+            <p>Choose your interview type and start practicing</p>
+        </div>
+
+        <div class="container">
+            <div class="user-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalInterviews">0</div>
+                    <div class="stat-label">Interviews Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgScore">0%</div>
+                    <div class="stat-label">Average Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="bestScore">0%</div>
+                    <div class="stat-label">Best Score</div>
+                </div>
+            </div>
+
+            <h2 style="font-size: 32px; margin-bottom: 30px; color: #1a202c;">Choose Your Interview Type</h2>
+            <div class="interview-types">
+                <div class="type-card" onclick="startInterview('software')">
+                    <h3>💻 Software Engineer</h3>
+                    <p>Technical questions, algorithms, system design, and coding best practices</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+                <div class="type-card" onclick="startInterview('product')">
+                    <h3>📱 Product Manager</h3>
+                    <p>Product strategy, roadmap planning, stakeholder management</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+                <div class="type-card" onclick="startInterview('marketing')">
+                    <h3>📊 Marketing Manager</h3>
+                    <p>Campaign strategy, analytics, brand management</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+                <div class="type-card" onclick="startInterview('data')">
+                    <h3>📈 Data Scientist</h3>
+                    <p>Statistical analysis, machine learning, data visualization</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+                <div class="type-card" onclick="startInterview('sales')">
+                    <h3>💼 Sales Executive</h3>
+                    <p>Client relationships, negotiation, pipeline management</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+                <div class="type-card" onclick="startInterview('hr')">
+                    <h3>👥 HR Manager</h3>
+                    <p>Recruitment, employee relations, performance management</p>
+                    <p class="meta">5 questions • 15 min</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px;">
+                <h2 style="font-size: 32px; margin-bottom: 30px; color: #1a202c;">Your Interview History</h2>
+                <div id="interviewHistory">
+                    <p style="text-align: center; color: #718096; padding: 40px;">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interview Page -->
+    <div id="interviewPage" class="page">
+        <div class="container">
+            <div class="interview-screen">
+                <div class="question-header">
+                    <div class="timer" id="timer">Time Remaining: 3:00</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="question-number" id="questionNumber">Question 1 of 5</div>
+                <div class="question-text" id="questionText"></div>
+
+                <div class="form-group">
+                    <label>Your Answer</label>
+                    <textarea id="answerInput" placeholder="Type your answer here... Be specific and provide examples."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="skipQuestion()">Skip Question</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()">Next Question →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Page -->
+    <div id="resultsPage" class="page">
+        <div class="container">
+            <div class="results-summary">
+                <h2 style="font-size: 32px; margin-bottom: 20px;">Interview Complete!</h2>
+                <div class="score" id="finalScore">85%</div>
+                <p style="font-size: 18px;">You answered <span id="answeredCount">4</span> out of <span id="totalCount">5</span> questions</p>
+            </div>
+
+            <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <h2 style="font-size: 32px; margin-bottom: 30px; color: #1a202c;">Detailed Feedback</h2>
+                <div id="feedbackContainer"></div>
+
+                <div class="button-group" style="margin-top: 40px;">
+                    <button class="btn btn-secondary" onclick="showPage('dashboard')">Back to Dashboard</button>
+                    <button class="btn btn-primary" onclick="showPage('dashboard')">Start New Interview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+                        <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 InterviewIQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Auth Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="message error" id="loginError"></div>
+            <div class="message success" id="loginSuccess"></div>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a href="#" onclick="openModal('signup')">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join InterviewIQ</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="message error" id="signupError"></div>
+            <div class="message success" id="signupSuccess"></div>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" required placeholder="••••••••" minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">Create Account</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a href="#" onclick="openModal('login')">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // ===================================
+        // FIREBASE CONFIGURATION
+        // ===================================
+        const firebaseConfig = {
+            apiKey: "YOUR-API-KEY-HERE",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "your-messaging-sender-id",
+            appId: "your-app-id"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // ===================================
+        // GLOBAL VARIABLES
+        // ===================================
+        let currentUser = null;
+        let currentInterview = null;
+        let currentQuestionIndex = 0;
+        let interviewAnswers = [];
+        let timerInterval = null;
+        let timeRemaining = 180;
+
+        const interviewQuestions = {
+            software: [
+                "Explain the difference between SQL and NoSQL databases. When would you use each?",
+                "What is your experience with version control systems like Git? Describe a complex merge conflict you resolved.",
+                "How do you approach debugging a performance issue in production?",
+                "Describe a challenging technical project you worked on and how you overcame obstacles.",
+                "What design patterns do you frequently use and why?"
+            ],
+            product: [
+                "How do you prioritize features when you have limited resources?",
+                "Describe a time when you had to make a difficult trade-off decision.",
+                "How do you gather and incorporate user feedback into your product roadmap?",
+                "What metrics do you track to measure product success?",
+                "How do you handle disagreements with engineering or design teams?"
+            ],
+            marketing: [
+                "How do you measure the ROI of a marketing campaign?",
+                "Describe a successful campaign you led from conception to completion.",
+                "How do you stay current with marketing trends and technologies?",
+                "What's your approach to A/B testing and optimization?",
+                "How do you balance brand awareness with lead generation?"
+            ],
+            data: [
+                "Explain the bias-variance tradeoff in machine learning.",
+                "How do you handle missing or incomplete data in your analysis?",
+                "Describe a time when your data analysis led to a significant business decision.",
+                "What's your process for validating a machine learning model?",
+                "How do you communicate complex statistical concepts to non-technical stakeholders?"
+            ],
+            sales: [
+                "Tell me about your most challenging sales cycle and how you closed the deal.",
+                "How do you handle objections from potential clients?",
+                "What's your approach to building long-term client relationships?",
+                "How do you prioritize your sales pipeline?",
+                "Describe a time when you exceeded your sales quota."
+            ],
+            hr: [
+                "How do you handle conflicts between employees?",
+                "What's your approach to improving employee retention?",
+                "How do you ensure fair and unbiased hiring practices?",
+                "Describe your experience with performance management systems.",
+                "How do you measure the effectiveness of training programs?"
+            ]
+        };
+
+        // ===================================
+        // PAGE NAVIGATION
+        // ===================================
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            if (pageName === 'landing') {
+                document.getElementById('landingPage').classList.add('active');
+            } else if (pageName === 'dashboard') {
+                document.getElementById('dashboardPage').classList.add('active');
+                if (currentUser) {
+                    loadDashboardStats();
+                    loadInterviewHistory();
+                }
+            } else if (pageName === 'interview') {
+                document.getElementById('interviewPage').classList.add('active');
+            } else if (pageName === 'results') {
+                document.getElementById('resultsPage').classList.add('active');
+            }
+        }
+
+        function goToHome() {
+            if (currentUser) {
+                showPage('dashboard');
+            } else {
+                showPage('landing');
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            if (document.getElementById('landingPage').classList.contains('active')) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }
+
+        // ===================================
+        // MODAL MANAGEMENT
+        // ===================================
+        function openModal(modalType) {
+            closeModal();
+            if (modalType === 'login') {
+                document.getElementById('loginModal').classList.add('active');
+            } else if (modalType === 'signup') {
+                document.getElementById('signupModal').classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.querySelectorAll('.message').forEach(msg => {
+                msg.classList.remove('active');
+                msg.textContent = '';
+            });
+        }
+
+        // ===================================
+        // AUTHENTICATION
+        // ===================================
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+            if (user) {
+                // User is signed in
+                document.getElementById('navAuth').classList.add('hidden');
+                document.getElementById('navUser').classList.remove('hidden');
+                document.getElementById('userEmailNav').textContent = user.email;
+                showPage('dashboard');
+                loadDashboardStats();
+                loadInterviewHistory();
+            } else {
+                // User is signed out
+                document.getElementById('navAuth').classList.remove('hidden');
+                document.getElementById('navUser').classList.add('hidden');
+                if (!document.getElementById('landingPage').classList.contains('active')) {
+                    showPage('landing');
+                }
+            }
+        });
+
+        async function handleSignup(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                
+                // Save user profile to Firestore
+                await db.collection('users').doc(userCredential.user.uid).set({
+                    name: name,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                document.getElementById('signupSuccess').textContent = 'Account created successfully!';
+                document.getElementById('signupSuccess').classList.add('active');
+                
+                setTimeout(() => {
+                    closeModal();
+                    showPage('dashboard');
+                }, 1500);
+                
+            } catch (error) {
+                document.getElementById('signupError').textContent = error.message;
+                document.getElementById('signupError').classList.add('active');
+            }
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                document.getElementById('loginSuccess').textContent = 'Login successful!';
+                document.getElementById('loginSuccess').classList.add('active');
+                
+                setTimeout(() => {
+                    closeModal();
+                    showPage('dashboard');
+                }, 1000);
+                
+            } catch (error) {
+                document.getElementById('loginError').textContent = error.message;
+                document.getElementById('loginError').classList.add('active');
+            }
+        }
+
+        async function handleLogout() {
+            try {
+                await auth.signOut();
+                showPage('landing');
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+
+        // ===================================
+        // DASHBOARD FUNCTIONS
+        // ===================================
+        async function loadDashboardStats() {
+            if (!currentUser) return;
+            
+            try {
+                const snapshot = await db.collection('interviews')
+                    .where('userId', '==', currentUser.uid)
+                    .get();
+                
+                if (!snapshot.empty) {
+                    let totalScore = 0;
+                    let bestScore = 0;
+                    let totalInterviews = snapshot.size;
+                    
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        totalScore += data.score || 0;
+                        if (data.score > bestScore) {
+                            bestScore = data.score;
+                        }
+                    });
+                    
+                    const avgScore = Math.round(totalScore / totalInterviews);
+                    
+                    document.getElementById('totalInterviews').textContent = totalInterviews;
+                    document.getElementById('avgScore').textContent = avgScore + '%';
+                    document.getElementById('bestScore').textContent = bestScore + '%';
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadInterviewHistory() {
+            if (!currentUser) return;
+            
+            const container = document.getElementById('interviewHistory');
+            
+            try {
+                const snapshot = await db.collection('interviews')
+                    .where('userId', '==', currentUser.uid)
+                    .orderBy('completedAt', 'desc')
+                    .limit(5)
+                    .get();
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p style="text-align: center; color: #718096; padding: 40px;">No interviews yet. Start your first one above!</p>';
+                    return;
+                }
+                
+                container.innerHTML = '';
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const date = data.completedAt ? data.completedAt.toDate().toLocaleDateString() : 'Unknown';
+                    
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <div>
+                            <h3 style="margin: 0; color: #2d3748; margin-bottom: 8px;">
+                                ${data.type.charAt(0).toUpperCase() + data.type.slice(1)} Interview
+                            </h3>
+                            <p style="margin: 0; color: #718096;">Completed on ${date}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 36px; font-weight: 700; color: #667eea;">${data.score}%</div>
+                            <p style="margin: 0; color: #718096;">${data.answeredCount}/${data.totalQuestions} answered</p>
+                        </div>
+                    `;
+                    container.appendChild(historyItem);
+                });
+                
+            } catch (error) {
+                console.error('Error loading history:', error);
+                container.innerHTML = '<p style="text-align: center; color: #f56565; padding: 40px;">Error loading interview history.</p>';
+            }
+        }
+
+        // ===================================
+        // INTERVIEW FUNCTIONS
+        // ===================================
+        function startInterview(type) {
+            if (!currentUser) {
+                openModal('login');
+                return;
+            }
+            
+            currentInterview = {
+                type: type,
+                questions: interviewQuestions[type],
+                startTime: new Date()
+            };
+            currentQuestionIndex = 0;
+            interviewAnswers = [];
+            timeRemaining = 180;
+            
+            showPage('interview');
+            loadQuestion();
+            startTimer();
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentInterview.questions.length) {
+                finishInterview();
+                return;
+            }
+
+            document.getElementById('questionNumber').textContent = 
+                `Question ${currentQuestionIndex + 1} of ${currentInterview.questions.length}`;
+            document.getElementById('questionText').textContent = 
+                currentInterview.questions[currentQuestionIndex];
+            document.getElementById('answerInput').value = '';
+            
+            const progress = ((currentQuestionIndex) / currentInterview.questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            timeRemaining = 180;
+            updateTimerDisplay();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time's up! Moving to the next question.");
+                    nextQuestion(true);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = 
+                `Time Remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function nextQuestion(forced = false) {
+            const answerText = document.getElementById('answerInput').value.trim();
+            
+            interviewAnswers.push({
+                questionId: currentQuestionIndex,
+                questionText: currentInterview.questions[currentQuestionIndex],
+                userAnswer: forced && answerText === "" ? "Time Expired - No Answer" : answerText,
+                timeSpent: 180 - timeRemaining
+            });
+
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function skipQuestion() {
+            interviewAnswers.push({
+                questionId: currentQuestionIndex,
+                questionText: currentInterview.questions[currentQuestionIndex],
+                userAnswer: "Skipped",
+                timeSpent: 180 - timeRemaining
+            });
+            
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // ===================================
+        // RESULTS FUNCTIONS
+        // ===================================
+        async function finishInterview() {
+            clearInterval(timerInterval);
+
+            // Calculate score
+            let totalScore = 0;
+            let answeredCount = 0;
+            const feedbackItems = [];
+
+            interviewAnswers.forEach((item, index) => {
+                let questionScore = 0;
+                let feedback = "";
+                let assessment = "";
+                
+                if (item.userAnswer === "Skipped") {
+                    feedback = "You skipped this question. Try to attempt all questions in a real interview.";
+                    assessment = "weak";
+                } else if (item.userAnswer === "Time Expired - No Answer") {
+                    feedback = "Time expired before answering. Practice timing your responses.";
+                    assessment = "weak";
+                } else if (item.userAnswer.length > 150) {
+                    questionScore = 20;
+                    answeredCount++;
+                    feedback = "Excellent detailed answer! You provided specific examples and thorough explanations.";
+                    assessment = "excellent";
+                } else if (item.userAnswer.length > 80) {
+                    questionScore = 15;
+                    answeredCount++;
+                    feedback = "Good answer. Consider adding more specific examples or quantifiable results.";
+                    assessment = "good";
+                } else if (item.userAnswer.length > 40) {
+                    questionScore = 10;
+                    answeredCount++;
+                    feedback = "Basic answer. Try to elaborate with more detail and context.";
+                    assessment = "fair";
+                } else {
+                    questionScore = 5;
+                    answeredCount++;
+                    feedback = "Answer too brief. Provide more comprehensive responses in real interviews.";
+                    assessment = "weak";
+                }
+                
+                totalScore += questionScore;
+                
+                feedbackItems.push({
+                    question: item.questionText,
+                    answer: item.userAnswer,
+                    feedback: feedback,
+                    score: questionScore,
+                    assessment: assessment
+                });
+            });
+
+            const maxPossibleScore = currentInterview.questions.length * 20;
+            let finalPercentage = Math.round((totalScore / maxPossibleScore) * 100);
+            if (finalPercentage > 100) finalPercentage = 100;
+
+            // Prepare interview data
+            const interviewData = {
+                userId: currentUser.uid,
+                userEmail: currentUser.email,
+                type: currentInterview.type,
+                score: finalPercentage,
+                answeredCount: answeredCount,
+                totalQuestions: currentInterview.questions.length,
+                answers: interviewAnswers,
+                completedAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            // Save to Firebase
+            await saveInterviewToDatabase(interviewData);
+
+            // Update UI
+            showPage('results');
+            document.getElementById('finalScore').textContent = `${finalPercentage}%`;
+            document.getElementById('answeredCount').textContent = answeredCount;
+            document.getElementById('totalCount').textContent = currentInterview.questions.length;
+            
+            // Display feedback
+            displayFeedback(feedbackItems);
+            
+            // Reload dashboard stats
+            loadDashboardStats();
+            loadInterviewHistory();
+        }
+
+        async function saveInterviewToDatabase(interviewData) {
+            if (!currentUser) return;
+            
+            try {
+                await db.collection('interviews').add(interviewData);
+                console.log('Interview saved successfully!');
+            } catch (error) {
+                console.error('Error saving interview:', error);
+            }
+        }
+
+        function displayFeedback(feedbackItems) {
+            const container = document.getElementById('feedbackContainer');
+            container.innerHTML = '';
+            
+            feedbackItems.forEach((item, index) => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                
+                let assessmentClass = '';
+                let assessmentText = '';
+                switch(item.assessment) {
+                    case 'excellent':
+                        assessmentClass = '';
+                        assessmentText = 'Excellent';
+                        break;
+                    case 'good':
+                        assessmentClass = 'good';
+                        assessmentText = 'Good';
+                        break;
+                    case 'fair':
+                        assessmentClass = 'good';
+                        assessmentText = 'Fair';
+                        break;
+                    case 'weak':
+                        assessmentClass = 'weak';
+                        assessmentText = 'Needs Improvement';
+                        break;
+                }
+                
+                feedbackItem.innerHTML = `
+                    <h3>Question ${index + 1}: ${item.score}/20</h3>
+                    <div class="assessment">
+                        <span class="assessment-badge ${assessmentClass}">${assessmentText}</span>
+                        <span>Time spent: ${item.timeSpent || 0}s</span>
+                    </div>
+                    <div class="question">
+                        <strong>Question:</strong> ${item.question}
+                    </div>
+                    <div style="margin: 15px 0; padding: 15px; background: #f8fafc; border-radius: 8px;">
+                        <strong>Your Answer:</strong><br>${item.answer}
+                    </div>
+                    <div style="color: #2d3748;">
+                        <strong>Feedback:</strong> ${item.feedback}
+                    </div>
+                `;
+                container.appendChild(feedbackItem);
+            });
+        }
+
+        // ===================================
+        // FAQ FUNCTIONALITY
+        // ===================================
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+            const span = element.querySelector('span');
+            span.textContent = faqItem.classList.contains('active') ? '−' : '+';
+        }
+
+        // Initialize FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close modal when clicking outside
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+            });
+            
+            // Initialize FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('span').textContent = '+';
+            });
+            
+            // Check auth state on load
+            auth.onAuthStateChanged((user) => {
+                currentUser = user;
+                if (user) {
+                    document.getElementById('navAuth').classList.add('hidden');
+                    document.getElementById('navUser').classList.remove('hidden');
+                    document.getElementById('userEmailNav').textContent = user.email;
+                } else {
+                    document.getElementById('navAuth').classList.remove('hidden');
+                    document.getElementById('navUser').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
